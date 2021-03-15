@@ -33,8 +33,14 @@
       "ga" = "git add --all";
       "gs"  = "git status";
       "hig"  = "bat ~/.bash_history | grep";
-      "la"  = "ls -A";
+      "la"  = "ls -A --color";
+      "ls"  = "ls --color";
     };
+  };
+
+  programs.dircolors = {
+    enable = true;
+    enableBashIntegration = true;
   };
 
   programs.git = {
