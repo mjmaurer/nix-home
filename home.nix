@@ -50,6 +50,10 @@
     aliases = {
       pr = "pull --rebase";
     };
+    signing = {
+      key = "DA7297EEEF7B429CE7B4A11EE5DDBB38668F1E46";
+      signByDefault = true;
+    };
     extraConfig = {
       init.defaultBranch = "main";
       core.editor = "nvim";
