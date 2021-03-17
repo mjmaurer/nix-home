@@ -8,6 +8,8 @@
 
   home.packages = with pkgs; [
     ripgrep
+    vulnix
+    nixfmt
     bat
     htop
     wget
