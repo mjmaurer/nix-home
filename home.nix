@@ -32,6 +32,7 @@
     shellAliases = {
       ".."  = "cd ..";
       "gc" = "git commit -v";
+      "gcs" = "git commit -v --gpg-sign";
       "ga" = "git add --all";
       "gs"  = "git status";
       "hig"  = "bat ~/.bash_history | grep";
@@ -51,10 +52,12 @@
     userEmail = "mjmaurer777@gmail.com";
     aliases = {
       pr = "pull --rebase";
+      gc = "commit -v";
+      gcs = "commit -v --gpg-sign";
     };
     signing = {
       key = "DA7297EEEF7B429CE7B4A11EE5DDBB38668F1E46";
-      signByDefault = true;
+      signByDefault = false;
     };
     extraConfig = {
       init.defaultBranch = "main";
