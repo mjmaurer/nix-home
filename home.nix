@@ -54,6 +54,8 @@
       pr = "pull --rebase";
       gc = "commit -v";
       gcs = "commit -v --gpg-sign";
+      ga = "add --all";
+      s = "status";
     };
     signing = {
       key = "DA7297EEEF7B429CE7B4A11EE5DDBB38668F1E46";
