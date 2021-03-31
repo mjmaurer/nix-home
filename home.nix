@@ -9,6 +9,7 @@
   home.packages = with pkgs; [
     ripgrep
     vulnix
+    youtube-dl
     nixfmt
     bat
     htop
