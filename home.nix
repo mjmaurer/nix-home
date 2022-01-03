@@ -17,11 +17,6 @@
     neofetch
   ];
 
-  services.gpg-agent = {
-    enable = true;
-    defaultCacheTtl = 1800;
-  };
-
   programs.bash = {
     enable = true;
     sessionVariables = {
@@ -37,8 +32,8 @@
       "ga" = "git add --all";
       "gs"  = "git status";
       "hig"  = "bat ~/.bash_history | grep";
-      "la"  = "ls -A --color";
-      "ls"  = "ls --color";
+      "la"  = "ls -A -G";
+      "ls"  = "ls -G";
     };
   };
 
