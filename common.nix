@@ -31,14 +31,14 @@
     initExtra = builtins.readFile ./programs/bash/bashrc;
     profileExtra = builtins.readFile ./programs/bash/profile;
     shellAliases = {
-      ".."  = "cd ..";
+      ".." = "cd ..";
       "gc" = "git commit -v";
       "gcs" = "git commit -v --gpg-sign";
       "ga" = "git add --all";
-      "gs"  = "git status";
-      "hig"  = "bat ~/.bash_history | grep";
-      "la"  = "ls -A --color";
-      "ls"  = "ls --color";
+      "gs" = "git status";
+      "hig" = "bat ~/.bash_history | grep";
+      "la" = "ls -A --color";
+      "ls" = "ls --color";
     };
   };
 
@@ -72,8 +72,6 @@
     enable = true;
     vimAlias = true;
     extraConfig = builtins.readFile ./programs/vim/config.vim;
-    plugins = with pkgs.vimPlugins; [
-      vim-polyglot
-    ];
+    plugins = with pkgs.vimPlugins; [ vim-polyglot ];
   };
 }
