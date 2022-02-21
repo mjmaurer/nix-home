@@ -18,7 +18,7 @@
   ];
 
   services.gpg-agent = {
-    enable = true;
+    enable = lib.mkDefault true;
     defaultCacheTtl = 1800;
   };
 
