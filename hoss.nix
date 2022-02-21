@@ -1,6 +1,9 @@
 { pkgs, ... }:
 
 {
-  imports = [ ./common.nix ];
-  programs.bash.sessionVariables = { MACHINE_NAME = "hoss"; };
+  imports = [ ./common.nix ./common-wsl.nix ];
+  programs.bash.sessionVariables = {
+    MACHINE_NAME = "hoss";
+    WIN_DOWNLOADS = "/mnt/c/Users/mjmau/Downloads/";
+  };
 }
