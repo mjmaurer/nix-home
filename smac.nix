@@ -5,7 +5,7 @@
 
   services.gpg-agent.enable = false;
 
-  programs.bash.sessionVariables = {
+  programs.bash = {
     sessionVariables = { MACHINE_NAME = "smac"; };
     shellAliases = {
       "la" = "ls -A -G";

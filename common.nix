@@ -37,8 +37,8 @@
       "ga" = "git add --all";
       "gs" = "git status";
       "hig" = "bat ~/.bash_history | grep";
-      "la" = "ls -A --color";
-      "ls" = "ls --color";
+      "la" = lib.mkDefault "ls -A --color";
+      "ls" = lib.mkDefault "ls --color";
     };
   };
 
