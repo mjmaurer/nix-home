@@ -6,6 +6,8 @@ if [ ! -z "$inwsl" ]; then
     export DISPLAY=:0.0
 fi
 
+eval "$(pyenv init -)"
+
 # unbind alt keys
 bind -r '\ei'
 bind -r '\ea'
