@@ -1,4 +1,3 @@
-# Install nix + home-manager
-ln -s `pwd` ~/.config/nixpkgs
+# See install.sh
 
 # Inspiration: https://github.com/yrashk/nix-home

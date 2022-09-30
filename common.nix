@@ -4,7 +4,7 @@
   programs.home-manager.enable = true;
 
   home.username = "mjmaurer";
-  home.homeDirectory = "/home/mjmaurer";
+  home.stateVersion = "22.05";
 
   home.packages = with pkgs; [
     ripgrep
@@ -24,6 +24,7 @@
 
   programs.bash = {
     enable = true;
+    enableCompletion = true;
     sessionVariables = {
       EDITOR = "nvim";
       VISUAL = "nvim";

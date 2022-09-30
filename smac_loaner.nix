@@ -1,7 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
   imports = [ ./common.nix ./common-mac.nix ];
+
+  home.username = pkgs.lib.mkForce "michaelmaurer";
 
   services.gpg-agent.enable = false;
 
