@@ -1,6 +1,6 @@
 set -o vi
 
-inwsl=$(grep Microsoft /proc/version)
+inwsl=$(test -f /proc/version && grep Microsoft /proc/version)
 
 if [ ! -z "$inwsl" ]; then
     export DISPLAY=:0.0
