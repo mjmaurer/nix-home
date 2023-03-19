@@ -15,8 +15,15 @@ bind -r '\ea'
 bind -r '\ef'
 bind -r '\em'
 
+if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ] ; then
+    PS1="\[\e[1;36m\]\u@\[\e[1;36m\]\h"
+  else
+    PS1=""
+fi
+
 # bash prompt
-export PS1="\[\e[1;36m\]\w\\$ \[\e[0m\]"
+PS1+="\[\e[1;36m\]\w\\$ \[\e[0m\]"
+export PS1
 
 # If not running interactively, don't do anything
 case $- in

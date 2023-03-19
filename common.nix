@@ -15,6 +15,7 @@
     htop
     wget
     neofetch
+    unzip
   ];
 
   services.gpg-agent = {
