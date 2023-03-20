@@ -16,7 +16,7 @@ bind -r '\ef'
 bind -r '\em'
 
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ] ; then
-    PS1="\[\e[1;36m\]\u@\[\e[1;36m\]\h"
+    PS1="[\[\e[1;32m\]\u@\[\e[1;32m\]\h]"
   else
     PS1=""
 fi
