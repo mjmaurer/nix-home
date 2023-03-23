@@ -111,9 +111,6 @@ in
     MACHINE_NAME = "homelab-proxy";
   };
 
-  # Generate the Nginx configuration file
-  home.file."nginx.conf".text = generateNginxConfig;
-
   # Create the nginx user
   users.users = {
     "nginx" = {
@@ -132,9 +129,12 @@ in
     "nginx" = {};
   };
 
+  # Generate the Nginx configuration file
+  home.file."nginx.conf".text = generateNginxConfig;
+
   systemd.services = {
-    "nginx.service" = systemd.mkEnable nginxService;
-    "certbot.service" = systemd.mkEnable certbotService;
-    "initialCertbot.service" = systemd.mkEnable initialCertbotService;
+    "nginx.service" = nginxService;
+    "certbot.service" = certbotService;
+    "initialCertbot.service" = initialCertbotService;
   };
 }
