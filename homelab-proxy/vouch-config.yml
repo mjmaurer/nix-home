@@ -11,4 +11,7 @@ oauth:
   auth_url: https://discordapp.com/api/oauth2/authorize
   token_url: https://discordapp.com/api/oauth2/token
   user_info_url: https://discordapp.com/api/users/@me
-  scopes: ["identify", "guilds", "email"]
+  scopes: 
+    - identify
+    - guilds
+    - email
