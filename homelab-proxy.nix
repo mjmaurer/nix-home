@@ -87,7 +87,7 @@ let
           Persistent = true;
         };
       };
-    }
+    };
   };
 in
 {
