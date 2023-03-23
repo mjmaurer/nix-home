@@ -22,14 +22,14 @@ services:
         main:
             aliases:
                 - nginx
-  vouch-proxy:
+  vouch:
     image: voucher/vouch-proxy:latest
     volumes:
       - ./vouch-config.yml:/config/config.yml
     depends_on:
       - nginx
     ports:
-      - "9090:9090"
+      - '9090:9090'
     environment:
       - VOUCH_DOMAINS
       - VOUCH_WHITELIST
