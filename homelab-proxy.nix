@@ -130,8 +130,8 @@ in
   home.file."nginx.conf".text = nginxConfig;
 
   systemd.user.services = {
-    "nginx.service" = nginxService;
-    "certbot.service" = certbotService;
-    "initialCertbot.service" = initialCertbotService;
+    "nginx" = nginxService;
+    "certbot" = certbotService;
+    "initialCertbot" = initialCertbotService;
   };
 }
