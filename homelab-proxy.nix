@@ -102,7 +102,6 @@ in
   home.username = pkgs.lib.mkForce "ubuntu";
 
   home.packages = with pkgs; [
-    home.packages
     nginx
     certbot
   ];
