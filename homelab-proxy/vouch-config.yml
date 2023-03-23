@@ -1,14 +1,11 @@
 vouch:
   allowAllUsers: true
   logLevel: debug
-  document_root: /vp_in_a_path
   headers:
     claims:
       - id
       - discriminator
       - email
-  cookie:
-    domain: howell.haus
 
 oauth:
   provider: oidc

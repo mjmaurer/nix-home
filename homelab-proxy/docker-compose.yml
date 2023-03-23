@@ -34,6 +34,8 @@ services:
     environment:
       - VOUCH_DOMAINS
       - VOUCH_WHITELIST
+      - VOUCH_COOKIE_DOMAIN
+      - VOUCH_DOCUMENT_ROOT
       - OAUTH_CALLBACK_URL
       - OAUTH_CLIENT_ID
       - OAUTH_CLIENT_SECRET
