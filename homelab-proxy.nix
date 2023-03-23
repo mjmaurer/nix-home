@@ -129,5 +129,5 @@ in
   systemd.services = {
     "nginx.service" = systemd.mkEnable nginxService;
     "certbot.service" = systemd.mkEnable certbotService;
-  }
+  };
 }
