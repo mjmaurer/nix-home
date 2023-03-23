@@ -10,6 +10,7 @@ in
 
   home.packages = with pkgs; [
     docker
+    docker-compose
   ];
 
   programs.bash.sessionVariables = {
