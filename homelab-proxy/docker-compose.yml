@@ -17,7 +17,7 @@ services:
       NGINX_ENVSUBST_TEMPLATE_SUFFIX: ".conf"
   certbot:
     image: certbot/certbot:latest
-    container_name: certbot
+    container_name: certbot-initial
     volumes:
       - ./certs:/etc/letsencrypt
       - ./data:/data/letsencrypt
