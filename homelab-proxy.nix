@@ -63,7 +63,7 @@ let
         --deploy-hook "systemctl reload nginx"
     '';
 
-    inNixShell {
+    inNixShell = {
       nginxService = {
         Service = {
           ExecStart = "${pkgs.nginx}/bin/nginx -c ${config.environment.etc.nginx}/nginx.conf";
