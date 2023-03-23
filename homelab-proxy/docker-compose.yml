@@ -23,7 +23,7 @@ services:
     volumes:
       - ./certs:/etc/letsencrypt
       - ./data:/data/letsencrypt
-    command: certonly --staging -d ${DOMAIN} --non-interactive --agree-tos -m mjmaurer777@gmail.com
+    command: certonly --staging -d ${DOMAIN} --standalone --non-interactive --agree-tos -m mjmaurer777@gmail.com
     restart: 'no'
     environment:
       - DOMAIN
