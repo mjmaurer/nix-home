@@ -21,13 +21,12 @@ in
 
   programs.bash.initExtra = ''
     whitelist_user () {
-      env_var_name="VOUCH_WHITELIST"
       term="$1"
 
-      if [ -z "${!env_var_name}" ]; then
-          export ${env_var_name}="${term}"
+      if [ -z "VOUCH_WHITELIST" ]; then
+          export VOUCH_WHITELIST="${term}"
       else
-          export ${env_var_name}="${!env_var_name},${term}"
+          export VOUCH_WHITELIST="VOUCH_WHITELIST,${term}"
       fi
       echo "Make sure to reload vouch"
     }
