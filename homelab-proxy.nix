@@ -71,15 +71,24 @@ let
           Restart = "always";
         };
       };
-      certbotService = {
+      initialCertbotService = {
         Unit = {
           Description = "Certbot certificate registration for ${proxyAddr}";
           After = [ "nginx.service" ];
         };
-        # Run once after starting nginx, and then weekly after
         Service = {
           Type = "oneshot";
           ExecStart = "certbot certonly ${certbotFlags}";
+        };
+      };
+      certbotService = {
+        Unit = {
+          Description = "Certbot renewal for ${proxyAddr}";
+          After = [ "nginx.service" ];
+        };
+        Service = {
+          Type = "oneshot";
+          ExecStart = "certbot renew ${certbotFlags}";
         };
         Timer = {
           OnCalendar = "weekly";
@@ -129,5 +138,6 @@ in
   systemd.services = {
     "nginx.service" = systemd.mkEnable nginxService;
     "certbot.service" = systemd.mkEnable certbotService;
+    "initialCertbot.service" = systemd.mkEnable initialCertbotService;
   };
 }
