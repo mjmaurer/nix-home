@@ -112,22 +112,22 @@ in
   };
 
   # Create the nginx user
-  users.users = {
-    "nginx" = {
-      createHome = false;
-      group = "nginx";
-      home = "/var/lib/nginx";
-      shell = "${pkgs.bash}/bin/bash";
-      systemUser = true;
-      uid = 102;
-      gid = 102;
-    };
-  };
+  # users.users = {
+  #   "nginx" = {
+  #     createHome = false;
+  #     group = "nginx";
+  #     home = "/var/lib/nginx";
+  #     shell = "${pkgs.bash}/bin/bash";
+  #     systemUser = true;
+  #     uid = 102;
+  #     gid = 102;
+  #   };
+  # };
   
   # Create the nginx group
-  users.groups = {
-    "nginx" = {};
-  };
+  # users.groups = {
+  #   "nginx" = {};
+  # };
 
   # Generate the Nginx configuration file
   home.file."nginx.conf".text = generateNginxConfig;
