@@ -134,4 +134,5 @@ in
     "certbot" = certbotService;
     "initialCertbot" = initialCertbotService;
   };
+  systemd.user.startServices = true;
 }
