@@ -4,15 +4,15 @@ let
   # Define a function to generate the Nginx configuration file
   generateNginxConfig = proxyAddr: {
     file = pkgs.writeText "nginx.conf" ''
-      user nginx;
-      worker_processes auto;
-      error_log /var/log/nginx/error.log;
-
-      events {
-          worker_connections 1024 
-      }
-
       http {
+        user nginx;
+        worker_processes auto;
+        error_log /var/log/nginx/error.log;
+
+        events {
+            worker_connections 1024 
+        }
+
         server {
           listen 80;
           listen [::]:80;
@@ -79,7 +79,7 @@ let
         # Run once after starting nginx, and then weekly after
         Service = {
           Type = "oneshot";
-          ExecStart = "cerbot certonly ${certbotFlags}";
+          ExecStart = "certbot certonly ${certbotFlags}";
         };
         Timer = {
           OnCalendar = "weekly";
@@ -110,7 +110,7 @@ in
 
   # Create the nginx user
   users.users = {
-    ${nginxUser} = {
+    "nginx" = {
       createHome = false;
       group = "nginx";
       home = "/var/lib/nginx";
