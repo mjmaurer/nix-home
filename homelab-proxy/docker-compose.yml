@@ -26,6 +26,7 @@ services:
     image: voucher/vouch-proxy:latest
     volumes:
       - ./vouch-config.yml:/config/config.yml
+    container_name: vouch
     depends_on:
       - nginx
     ports:
