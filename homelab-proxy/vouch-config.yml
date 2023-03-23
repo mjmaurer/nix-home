@@ -1,5 +1,6 @@
 vouch:
-  allowAllUsers: true
+  allowAllUsers: false
+  logLevel: debug
   headers:
     claims:
       - id
