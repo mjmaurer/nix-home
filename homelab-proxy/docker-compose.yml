@@ -21,7 +21,7 @@ services:
     volumes:
       - ./certs:/etc/letsencrypt
       - ./data:/data/letsencrypt
-    command: certonly --webroot --webroot-path=/data/letsencrypt -d ${DOMAIN} --email mjmaurer777@gmail.com --agree-tos --non-interactive
+    command: certonly --staging -d ${DOMAIN} --email mjmaurer777@gmail.com --agree-tos --non-interactive
     restart: 'no'
     depends_on:
       - nginx
@@ -33,7 +33,7 @@ services:
     volumes:
       - ./certs:/etc/letsencrypt
       - ./data:/data/letsencrypt
-    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 24h & wait $${!}; done;'"
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do sleep 24h & wait $${!}; certbot renew --webroot --webroot-path=/data/letsencrypt ; done;'"
     restart: always
     depends_on:
       - certbot
