@@ -23,7 +23,7 @@ services:
             aliases:
                 - nginx
   vouch:
-    image: voucher/vouch-proxy:latest
+    image: quay.io/vouch/vouch-proxy:latest
     volumes:
       - ./vouch-config.yml:/config/config.yml
     container_name: vouch
