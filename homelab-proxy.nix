@@ -52,18 +52,17 @@ let
 
     # Automatically obtain and renew SSL certificate using Certbot
     # this only runs on Nix build (when Nginx should be down)
-    certbotFlags = ''
-        --webroot \
-        --webroot-path /var/www/letsencrypt \
-        --agree-tos \
-        --non-interactive \
-        --email mjmaurer777@gmail.com \
-        -d ${proxyAddr} \
-        --cert-name ${proxyAddr} \
-        --deploy-hook "systemctl reload nginx"
-    '';
-
     inNixShell = {
+      certbotFlags = ''
+          --webroot \
+          --webroot-path /var/www/letsencrypt \
+          --agree-tos \
+          --non-interactive \
+          --email mjmaurer777@gmail.com \
+          -d ${proxyAddr} \
+          --cert-name ${proxyAddr} \
+          --deploy-hook "systemctl reload nginx"
+      '';
       nginxService = {
         Service = {
           ExecStart = "${pkgs.nginx}/bin/nginx -c ${config.environment.etc.nginx}/nginx.conf";
