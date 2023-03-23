@@ -1,6 +1,7 @@
 vouch:
   allowAllUsers: true
   logLevel: debug
+  document_root: /vp_in_a_path
   headers:
     claims:
       - id
@@ -14,7 +15,7 @@ oauth:
   auth_url: https://discordapp.com/api/oauth2/authorize
   token_url: https://discordapp.com/api/oauth2/token
   user_info_url: https://discordapp.com/api/users/@me
-  scopes: 
+  scopes:
     - identify
     - guilds
     - email
