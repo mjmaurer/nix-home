@@ -132,7 +132,7 @@ in
   # Generate the Nginx configuration file
   home.file."nginx.conf".text = generateNginxConfig;
 
-  systemd.services = {
+  systemd.user.services = {
     "nginx.service" = nginxService;
     "certbot.service" = certbotService;
     "initialCertbot.service" = initialCertbotService;
