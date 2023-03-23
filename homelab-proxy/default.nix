@@ -16,7 +16,7 @@ in
     # See docker-compose for most environment variables needed 
     DOMAIN = domain;
     VOUCH_DOMAINS = domain;
-    OAUTH_CALLBACK_URL = "https://${domain}/auth";
+    OAUTH_CALLBACK_URL = "https://${domain}/vp_in_a_path/auth";
   };
 
   programs.bash.initExtra = ''
