@@ -65,7 +65,7 @@ let
   '';
   nginxService = {
     Service = {
-      ExecStart = "${pkgs.nginx}/bin/nginx -c ${config.environment.etc.nginx}/nginx.conf";
+      ExecStart = "${pkgs.nginx}/bin/nginx -c ~/nginx.conf";
       ExecReload = "${pkgs.nginx}/bin/nginx -s reload";
       Restart = "always";
     };
