@@ -15,7 +15,7 @@ in
     MACHINE_NAME = "homelab-proxy";
     # See docker-compose for most environment variables needed 
     DOMAIN = domain;
-    VOUCH_DOMAINS = domain;
+    # VOUCH_DOMAINS = domain; not need for allUIsers
     VOUCH_DOCUMENT_ROOT = "/vp_in_a_path";
     VOUCH_COOKIE_DOMAIN = domain;
     OAUTH_CALLBACK_URL = "https://${domain}/vp_in_a_path/auth";
