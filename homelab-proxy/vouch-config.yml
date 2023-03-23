@@ -6,6 +6,8 @@ vouch:
       - id
       - discriminator
       - email
+  cookie:
+    domain: howell.haus
 
 oauth:
   provider: oidc
