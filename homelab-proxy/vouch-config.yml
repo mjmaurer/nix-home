@@ -1,7 +1,6 @@
 vouch:
-  allowAllUsers: false
+  allowAllUsers: true
   logLevel: debug
-  document_root: /vp_in_a_path
   headers:
     claims:
       - id
