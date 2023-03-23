@@ -12,6 +12,8 @@ services:
       - ./certs:/etc/letsencrypt
       - ./data:/usr/share/nginx/html
     restart: always
+    depends_on:
+      - certbot
     environment:
       DOMAIN: ${DOMAIN}
       NGINX_ENVSUBST_TEMPLATE_SUFFIX: ".conf"
@@ -23,8 +25,6 @@ services:
       - ./data:/data/letsencrypt
     command: certonly --staging -d ${DOMAIN} --email mjmaurer777@gmail.com --agree-tos --non-interactive
     restart: 'no'
-    depends_on:
-      - nginx
     environment:
       - DOMAIN
   certbot-auto:
