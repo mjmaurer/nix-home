@@ -99,7 +99,7 @@ in
     home.packages
     nginx
     certbot
-  ]
+  ];
 
   programs.bash.sessionVariables = {
     MACHINE_NAME = "homelab-proxy";
