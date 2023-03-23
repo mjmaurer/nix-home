@@ -16,6 +16,7 @@ in
     # See docker-compose for most environment variables needed 
     DOMAIN = domain;
     VOUCH_DOMAINS = domain;
+    VOUCH_DOCUMENT_ROOT = "/vp_in_a_path;
     OAUTH_CALLBACK_URL = "https://${domain}/vp_in_a_path/auth";
   };
 
