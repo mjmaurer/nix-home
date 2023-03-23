@@ -18,6 +18,10 @@ services:
     environment:
       DOMAIN: ${DOMAIN}
       NGINX_ENVSUBST_TEMPLATE_SUFFIX: ".conf"
+    networks:
+        main:
+            aliases:
+                - nginx
   vouch-proxy:
     image: voucher/vouch-proxy:latest
     volumes:
@@ -32,6 +36,10 @@ services:
       - OAUTH_CALLBACK_URL
       - OAUTH_CLIENT_ID
       - OAUTH_CLIENT_SECRET
+    networks:
+        main:
+            aliases:
+                - vouch
   certbot:
     image: certbot/certbot:latest
     container_name: certbot-initial
@@ -56,3 +64,6 @@ services:
       - nginx
     environment:
       - DOMAIN
+
+networks:
+  main:
