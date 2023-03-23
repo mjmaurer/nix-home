@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 let
-  proxyAddr = "howell.haus";
+  domain = "howell.haus";
 in
 {
   imports = [ ../common.nix ../common-linux.nix ];
@@ -11,7 +11,6 @@ in
   # home.packages = with pkgs; [
   # ];
 
-  domain = "howell.haus";
   programs.bash.sessionVariables = {
     MACHINE_NAME = "homelab-proxy";
     # See docker-compose for most environment variables needed 
