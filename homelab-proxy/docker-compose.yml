@@ -13,8 +13,8 @@ services:
       - ./data:/usr/share/nginx/html
     restart: always
     environment:
-      - DOMAIN
-      - NGINX_ENVSUBST_TEMPLATE_SUFFIX: ".conf"
+      DOMAIN: ${DOMAIN}
+      NGINX_ENVSUBST_TEMPLATE_SUFFIX: ".conf"
   certbot:
     image: certbot/certbot:latest
     container_name: certbot
