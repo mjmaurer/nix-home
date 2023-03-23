@@ -11,9 +11,30 @@ in
   # home.packages = with pkgs; [
   # ];
 
+  domain = "howell.haus";
   programs.bash.sessionVariables = {
     MACHINE_NAME = "homelab-proxy";
-    DOMAIN = "howell.haus";
+    # See docker-compose for most environment variables needed 
+    DOMAIN = domain;
+    VOUCH_DOMAINS = domain;
+    OAUTH_CALLBACK_URL = "https://${domain}/auth";
   };
+
+  programs.bash.initExtra = ''
+    whitelist_user () {
+      env_var_name="VOUCH_WHITELIST"
+      term="$1"
+
+      if [ -z "${!env_var_name}" ]; then
+          export ${env_var_name}="${term}"
+      else
+          export ${env_var_name}="${!env_var_name},${term}"
+      fi
+      echo "Make sure to reload vouch"
+    }
+    source_env () {
+      export $(grep -v '^#' .env | xargs)
+    }
+  '';
 
 }
