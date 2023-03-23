@@ -8,13 +8,12 @@ in
 
   home.username = pkgs.lib.mkForce "ubuntu";
 
-  home.packages = with pkgs; [
-    docker
-    docker-compose
-  ];
+  # home.packages = with pkgs; [
+  # ];
 
   programs.bash.sessionVariables = {
     MACHINE_NAME = "homelab-proxy";
+    DOMAIN = "howell.haus";
   };
 
 }
