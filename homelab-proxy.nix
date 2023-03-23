@@ -1,8 +1,9 @@
 { config, pkgs, ... }:
 
 let
+  proxyAddr = "howell.haus";
   # Define a function to generate the Nginx configuration file
-  generateNginxConfig = proxyAddr: {
+  generateNginxConfig = {
     file = pkgs.writeText "nginx.conf" ''
       http {
         user nginx;
@@ -49,50 +50,49 @@ let
         }
       }
     '';
-
-    # Automatically obtain and renew SSL certificate using Certbot
-    # this only runs on Nix build (when Nginx should be down)
-    certbotFlags = ''
-        --webroot \
-        --webroot-path /var/www/letsencrypt \
-        --agree-tos \
-        --non-interactive \
-        --email mjmaurer777@gmail.com \
-        -d ${proxyAddr} \
-        --cert-name ${proxyAddr} \
-        --deploy-hook "systemctl reload nginx"
-    '';
-    nginxService = {
-      Service = {
-        ExecStart = "${pkgs.nginx}/bin/nginx -c ${config.environment.etc.nginx}/nginx.conf";
-        ExecReload = "${pkgs.nginx}/bin/nginx -s reload";
-        Restart = "always";
-      };
+  };
+  # Automatically obtain and renew SSL certificate using Certbot
+  # this only runs on Nix build (when Nginx should be down)
+  certbotFlags = ''
+      --webroot \
+      --webroot-path /var/www/letsencrypt \
+      --agree-tos \
+      --non-interactive \
+      --email mjmaurer777@gmail.com \
+      -d ${proxyAddr} \
+      --cert-name ${proxyAddr} \
+      --deploy-hook "systemctl reload nginx"
+  '';
+  nginxService = {
+    Service = {
+      ExecStart = "${pkgs.nginx}/bin/nginx -c ${config.environment.etc.nginx}/nginx.conf";
+      ExecReload = "${pkgs.nginx}/bin/nginx -s reload";
+      Restart = "always";
     };
-    initialCertbotService = {
-      Unit = {
-        Description = "Certbot certificate registration for ${proxyAddr}";
-        After = [ "nginx.service" ];
-      };
-      Service = {
-        Type = "oneshot";
-        ExecStart = "certbot certonly ${certbotFlags}";
-      };
+  };
+  initialCertbotService = {
+    Unit = {
+      Description = "Certbot certificate registration ";
+      After = [ "nginx.service" ];
     };
-    certbotService = {
-      Unit = {
-        Description = "Certbot renewal for ${proxyAddr}";
-        After = [ "nginx.service" ];
-      };
-      Service = {
-        Type = "oneshot";
-        ExecStart = "certbot renew ${certbotFlags}";
-      };
-      Timer = {
-        OnCalendar = "weekly";
-        RandomizedDelaySec = 5 * 60;
-        Persistent = true;
-      };
+    Service = {
+      Type = "oneshot";
+      ExecStart = "certbot certonly ${certbotFlags}";
+    };
+  };
+  certbotService = {
+    Unit = {
+      Description = "Certbot renewal";
+      After = [ "nginx.service" ];
+    };
+    Service = {
+      Type = "oneshot";
+      ExecStart = "certbot renew ${certbotFlags}";
+    };
+    Timer = {
+      OnCalendar = "weekly";
+      RandomizedDelaySec = 5 * 60;
+      Persistent = true;
     };
   };
 in
@@ -112,7 +112,7 @@ in
   };
 
   # Generate the Nginx configuration file
-  home.file."nginx.conf".text = generateNginxConfig "howell.haus";
+  home.file."nginx.conf".text = generateNginxConfig;
 
   # Create the nginx user
   users.users = {
