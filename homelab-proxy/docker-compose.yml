@@ -31,6 +31,7 @@ services:
       - nginx
     ports:
       - '9090:9090'
+    restart: always
     environment:
       - VOUCH_DOMAINS
       - VOUCH_WHITELIST
