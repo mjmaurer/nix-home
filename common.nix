@@ -41,6 +41,11 @@
       "hig" = "bat ~/.bash_history | grep";
       "la" = lib.mkDefault "ls -A --color";
       "ls" = lib.mkDefault "ls --color";
+      "dtail" = "docker logs -tf --tail='50'";
+      "dstop" = "docker stop `docker ps -aq`";
+      "drm" = "docker rm `docker ps -aq`";
+      "dcp" = "docker-compose -f ~/docker-compose.yml ";
+      "dcporph" = "docker-compose -f ~/docker-compose.yml --remove-orphans ";
     };
   };
 
