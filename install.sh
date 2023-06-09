@@ -11,4 +11,4 @@ nix-shell '<home-manager>' -A install
 
 
 # Make more configs as appropriate. Remember to reopen the shell
-home-manager -f ~/nix-home/hoss.nix switch
+home-manager -f ~/nix-home/hoss.nix switch -b backup

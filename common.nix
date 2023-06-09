@@ -16,6 +16,7 @@
     wget
     neofetch
     unzip
+    speedtest-cli
   ];
 
   services.gpg-agent = {
